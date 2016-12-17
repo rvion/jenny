@@ -1,21 +1,10 @@
-FILE ok1.gen
+{{#each comments}}
+FILE gen/ok{{this}}.gen
 <div class="entry">
-  <h1>{{title}}</h1>
+  <h1>{{../title}}</h1>
   <div class="body">
-    {{{body}}}
+    {{{../body}}}
+    {{this}}
   </div>
 </div>
-FILE ok2.gen
-<div class="entry">
-  <h1>{{title}}</h1>
-  <div class="body">
-    {{{body}}}
-  </div>
-</div>
-FILE ok3.gen
-<div class="entry">
-  <h1>{{title}}</h1>
-  <div class="body">
-    {{{body}}}
-  </div>
-</div>
+{{/each}}

@@ -1,3 +1,91 @@
-writing target ok3.gen
-writing target ok2.gen
-writing target ok1.gen
+FILE gen/ok1.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    1
+  </div>
+</div>
+FILE gen/ok2.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    2
+  </div>
+</div>
+FILE gen/ok3.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    3
+  </div>
+</div>
+FILE gen/ok4.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    4
+  </div>
+</div>
+FILE gen/ok5.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    5
+  </div>
+</div>
+FILE gen/ok6.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    6
+  </div>
+</div>
+FILE gen/ok7.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    7
+  </div>
+</div>
+FILE gen/ok8.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    8
+  </div>
+</div>
+FILE gen/ok9.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    9
+  </div>
+</div>
+FILE gen/ok10.gen
+<div class="entry">
+  <h1>foo</h1>
+  <div class="body">
+    bar
+    10
+  </div>
+</div>
+
+writing target gen/ok10.gen
+writing target gen/ok9.gen
+writing target gen/ok8.gen
+writing target gen/ok7.gen
+writing target gen/ok6.gen
+writing target gen/ok5.gen
+writing target gen/ok4.gen
+writing target gen/ok3.gen
+writing target gen/ok2.gen
+writing target gen/ok1.gen

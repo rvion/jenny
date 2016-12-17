@@ -4,7 +4,7 @@ import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, log)
 import Control.Monad.Eff.Exception (EXCEPTION)
-import Data.Array (cons, foldl, head)
+import Data.Array (cons, foldl, head, range)
 import Data.Either (Either(..))
 import Data.Foldable (for_)
 import Data.Maybe (Maybe(..))
@@ -35,7 +35,7 @@ app {templates, debug} =
     for_ templates $ \template -> do
       input <- getFile template
       let out = compile input context
-      -- when debug $ log out
+      when debug $ log out
       let targets = buildTargets out
       for_ targets \t -> do
         log ("writing target " <> t.filepath)
@@ -86,10 +86,9 @@ buildTargets str =
               } state.targets
           }
 
-context :: { title :: String
-, body :: String
-}
+context :: _
 context = {
+  comments: range 1 10,
   title: "foo",
   body: "bar"
 }
