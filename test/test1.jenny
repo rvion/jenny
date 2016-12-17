@@ -1,3 +1,18 @@
+FILE ok1.gen
+<div class="entry">
+  <h1>{{title}}</h1>
+  <div class="body">
+    {{{body}}}
+  </div>
+</div>
+FILE ok2.gen
+<div class="entry">
+  <h1>{{title}}</h1>
+  <div class="body">
+    {{{body}}}
+  </div>
+</div>
+FILE ok3.gen
 <div class="entry">
   <h1>{{title}}</h1>
   <div class="body">
