@@ -1,0 +1,25 @@
+{
+  "name": "jenny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node main.js > .dbg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvion/jenny.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rvion/jenny/issues"
+  },
+  "homepage": "https://github.com/rvion/jenny#readme",
+  "dependencies": {
+    "handlebars": "^4.0.6"
+  }
+}
