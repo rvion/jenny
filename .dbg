@@ -1,91 +1,25 @@
-FILE gen/ok1.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    1
-  </div>
-</div>
-FILE gen/ok2.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    2
-  </div>
-</div>
-FILE gen/ok3.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    3
-  </div>
-</div>
-FILE gen/ok4.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    4
-  </div>
-</div>
-FILE gen/ok5.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    5
-  </div>
-</div>
-FILE gen/ok6.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    6
-  </div>
-</div>
-FILE gen/ok7.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    7
-  </div>
-</div>
-FILE gen/ok8.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    8
-  </div>
-</div>
-FILE gen/ok9.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    9
-  </div>
-</div>
-FILE gen/ok10.gen
-<div class="entry">
-  <h1>foo</h1>
-  <div class="body">
-    bar
-    10
-  </div>
-</div>
-
-writing target gen/ok10.gen
-writing target gen/ok9.gen
-writing target gen/ok8.gen
-writing target gen/ok7.gen
-writing target gen/ok6.gen
-writing target gen/ok5.gen
-writing target gen/ok4.gen
-writing target gen/ok3.gen
-writing target gen/ok2.gen
-writing target gen/ok1.gen
+writing target gen/users.gen
+writing target gen/table_name.gen
+writing target gen/store.gen
+writing target gen/staff_list.gen
+writing target gen/staff.gen
+writing target gen/sales_by_store.gen
+writing target gen/sales_by_film_category.gen
+writing target gen/rental.gen
+writing target gen/payment.gen
+writing target gen/nicer_but_slower_film_list.gen
+writing target gen/language.gen
+writing target gen/inventory.gen
+writing target gen/foo.gen
+writing target gen/film_list.gen
+writing target gen/film_category.gen
+writing target gen/film_actor.gen
+writing target gen/film.gen
+writing target gen/customer_list.gen
+writing target gen/customer.gen
+writing target gen/country.gen
+writing target gen/city.gen
+writing target gen/category.gen
+writing target gen/address.gen
+writing target gen/actor_info.gen
+writing target gen/actor.gen

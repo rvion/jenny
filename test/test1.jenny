@@ -1,10 +1,9 @@
-{{#each comments}}
-FILE gen/ok{{this}}.gen
+{{#each tables}}
+FILE gen/{{@key}}.gen
 <div class="entry">
-  <h1>{{../title}}</h1>
-  <div class="body">
-    {{{../body}}}
-    {{this}}
-  </div>
+  ## {{@key}}
+  {{#each columns}}
+    {{@key}}: {{this}}
+  {{/each}}
 </div>
 {{/each}}

@@ -22,19 +22,17 @@ main = do
   opts <- getOpts
   app opts
 
-type Options = {
-  templates :: Array String,
-  debug :: Boolean
-}
-
+foreign import unsafeToJs :: forall a. String -> a
 app :: forall eff. Options -> M eff Unit
-app {templates, debug} =
+app {templates, debug, dbPath} =
   if templates == []
   then log "no templates given, exiting."
   else do
     for_ templates $ \template -> do
       input <- getFile template
-      let out = compile input context
+      context <- getFile dbPath
+      -- log context
+      let out = compile input (unsafeToJs context)
       when debug $ log out
       let targets = buildTargets out
       for_ targets \t -> do
@@ -86,20 +84,31 @@ buildTargets str =
               } state.targets
           }
 
-context :: _
-context = {
+demoContext :: _
+demoContext = {
   comments: range 1 10,
   title: "foo",
   body: "bar"
 }
+
+type Options = {
+  templates :: Array String,
+  dbPath :: String,
+  debug :: Boolean
+}
+
 getOpts :: forall eff. Eff ( err :: EXCEPTION , console :: CONSOLE | eff ) Options
 getOpts = runY setup parser
   where
     parser :: Y (Eff ( err :: EXCEPTION , console :: CONSOLE | eff ) Options)
-    parser = (\t d -> pure {templates:t, debug:d})
+    parser = (\templates dbPath debug -> pure {templates,dbPath,debug})
       <$> yarg "w" ["word"]
         (Just "A word")
         (Right "At least one word is required")
+        false
+      <*> yarg "d" ["dbPath"]
+        (Just "A word")
+        (Left "db/test.dump.json")
         false
       <*> flag "d" []
         (Just "debug")

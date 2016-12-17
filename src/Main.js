@@ -1,0 +1,1 @@
+exports.unsafeToJs = JSON.parse
