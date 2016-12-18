@@ -4,18 +4,16 @@ import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, log)
 import Control.Monad.Eff.Exception (EXCEPTION)
-import Data.Array (cons, foldl, head, range)
-import Data.Either (Either(..))
+import Data.Array (cons, foldl, head)
 import Data.Foldable (for_)
 import Data.Maybe (Maybe(..))
 import Data.String (Pattern(..), drop, indexOf, length, split, trim)
 import Node.Buffer (BUFFER)
 import Node.FS (FS)
-import Node.Yargs.Applicative (Y, flag, runY, yarg)
-import Node.Yargs.Setup (YargsSetup, example, usage)
 import Partial.Unsafe (unsafeCrashWith)
-import Text.Handlebars (compile)
+import Template (compile)
 import Util (getFile, putFile)
+import Option (Options, getOpts)
 
 main :: forall eff. M eff Unit
 main = do
@@ -83,39 +81,6 @@ buildTargets str =
                 content: state.currentContent
               } state.targets
           }
-
-demoContext :: _
-demoContext = {
-  comments: range 1 10,
-  title: "foo",
-  body: "bar"
-}
-
-type Options = {
-  templates :: Array String,
-  dbPath :: String,
-  debug :: Boolean
-}
-
-getOpts :: forall eff. Eff ( err :: EXCEPTION , console :: CONSOLE | eff ) Options
-getOpts = runY setup parser
-  where
-    parser :: Y (Eff ( err :: EXCEPTION , console :: CONSOLE | eff ) Options)
-    parser = (\templates dbPath debug -> pure {templates,dbPath,debug})
-      <$> yarg "w" ["word"]
-        (Just "A word")
-        (Right "At least one word is required")
-        false
-      <*> yarg "d" ["dbPath"]
-        (Just "A word")
-        (Left "db/test.dump.json")
-        false
-      <*> flag "d" []
-        (Just "debug")
-
-    setup :: YargsSetup
-    setup = usage   "$0 -w Word1 -w Word2"
-         <> example "$0 -w Hello -w World" "Say hello!"
 
 
 type M eff a = Eff
