@@ -1,27 +1,30 @@
--- | Low-level, unsafe bindings to the Handlebars templating library.
+module Template where
 
-module Template
-  ( compile
-  ) where
+import Template.Dot as Dot
+import Template.Handlebars as Handlebars
+import Template.Data (Template)
+import Template.Dot (Dot)
+import Template.Handlebars (Handlebars)
 
-import Control.Monad.Eff (Eff)
+type TE engine = {
+  template :: String -> Template engine,
+  render :: Template engine -> String,
+  renderWith :: forall a. Template engine -> a -> String,
+  compile :: forall a. String -> a -> String
+}
 
--- | Compile a string into a template which can be applied to a context.
--- |
--- | This function should be partially applyied, resulting in a compiled function
--- | which can be reused, instead of compiling the template on each
--- | application.
--- |
--- | _Note_: This function performs no verification on the template string,
--- | so it is recommended that an appropriate type signature be given to the
--- | resulting function. For example:
--- |
--- | ```purescript
--- | hello :: { name :: String } -> String
--- | hello = compile "Hello, {{name}}!"
--- | ```
-foreign import compile ::
-  forall a. String -> a -> String
+dot :: TE Dot
+dot = {
+  template: Dot.template,
+  render: Dot.render,
+  renderWith: Dot.renderWith,
+  compile: Dot.compile
+}
 
-foreign import helpers ::
-  forall eff a. Eff eff a
+handlebars :: TE Handlebars
+handlebars = {
+  template: Handlebars.template,
+  render: Handlebars.render,
+  renderWith: Handlebars.renderWith,
+  compile: Handlebars.compile
+}
