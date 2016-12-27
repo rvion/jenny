@@ -12,16 +12,14 @@ npm i
 writing target
 ```
 
-### template
-
-template engine:
+### Template engines
 
   - [handlebarsjs](http://handlebarsjs.com/) ([docs](doc here: https://www.npmjs.com/package/handlebars))
   - [dotjs](https://www.dotjs.io/) ([docs](http://olado.github.io/doT/index.html), [example](https://github.com/olado/doT/blob/master/examples/advancedsnippet.txt))
 
+:memo: dotjs seems better so far.
 
-
-### temporary todo
+### Temporary todo
 
   1. handle holes:
     ```
@@ -53,7 +51,8 @@ template engine:
       ```
   5. add logic in templates
   6. ability to check templates and give proper errors
-
+  7. logo
+  8. examples
 
 ### Misc ideas:
 
