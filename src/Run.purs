@@ -30,9 +30,10 @@ applyTemplate debug opts = do
   input <- getFile opts.templatePath
   -- context <- getFile dbPath
   let out = dot.compile input (unsafeToJs "{}")
-  -- when debug $ log out
+  when debug $ log "-----------------------------"
+  when debug $ log out
   targets <- buildTargets opts out
-  -- when debug $ logShow (Array.length targets)
+  when debug $ logShow (Array.length targets)
   for_ targets \t -> do
     let targetPath = -- dirname opts.templatePath <> "/" <>
           t.filepath
