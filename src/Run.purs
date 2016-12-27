@@ -21,17 +21,21 @@ foreign import unsafeToJs :: forall a. String -> a
 -- app {templates, debug} =
 
       -- pure tuni
-
-applyTemplate :: Boolean -> String -> Eff _ Unit
-applyTemplate debug templatePath = do
-  input <- getFile templatePath
+type OptionsP2 = {
+  templatePath :: String,
+  prefixPath :: String
+}
+applyTemplate :: Boolean -> OptionsP2 -> Eff _ Unit
+applyTemplate debug opts = do
+  input <- getFile opts.templatePath
   -- context <- getFile dbPath
   let out = dot.compile input (unsafeToJs "{}")
   -- when debug $ log out
-  targets <- buildTargets templatePath out
+  targets <- buildTargets opts out
   -- when debug $ logShow (Array.length targets)
   for_ targets \t -> do
-    let targetPath = dirname templatePath <> "/" <> t.filepath
+    let targetPath = -- dirname opts.templatePath <> "/" <>
+          t.filepath
     when debug $ log ("writing target " <> targetPath )
     putFile targetPath t.content
   pure unit
@@ -45,8 +49,9 @@ type State = {
   holes :: Array (Tuple String String)
 }
 
-buildTargets :: FilePath -> String -> Eff _ (Array Target)
-buildTargets templatePath str =
+-- TODO refactor this function to have less args
+buildTargets :: OptionsP2 -> String -> Eff _ (Array Target)
+buildTargets opts str =
   foldM
     dispatchLine
     initialState
@@ -58,7 +63,7 @@ buildTargets templatePath str =
       currentContent: [],
       currentPath: Nothing,
       targets: [],
-      holes: [] -- Array (Tuple String String)
+      holes: []
     }
 
     finish :: _ -> Array Target
@@ -77,8 +82,7 @@ buildTargets templatePath str =
         [ comment, "%%", "HOLE", holename] -> do
           case (state.currentPath) of
             Nothing -> unsafeCrashWith "hole out of file"
-            Just f' -> do
-              let f = dirname templatePath <> "/" <> f' 
+            Just f -> do
               fExists <- exists f
               logShow (Tuple f fExists)
               if fExists
@@ -102,7 +106,7 @@ buildTargets templatePath str =
         ["%%", "FILE", filename] -> pure $
           state {
             currentContent = [],
-            currentPath = Just filename,
+            currentPath = Just (finalPathFor opts filename),
             targets = case state.currentPath of
               Nothing -> state.targets
               Just currentPath -> snoc state.targets {
@@ -116,6 +120,13 @@ buildTargets templatePath str =
           }
 
 ------- CORE
+
+finalPathFor :: OptionsP2 -> FilePath -> FilePath
+finalPathFor opts fp =
+  if opts.prefixPath == ""
+    then dirname opts.templatePath <> "/" <> fp
+    else dirname opts.templatePath <> "/" <> opts.prefixPath <> "/" <> fp
+
 
 getHole :: String -> String -> String
 getHole holeName file = go (lines file)

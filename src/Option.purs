@@ -11,6 +11,7 @@ import Node.Yargs.Setup (YargsSetup, example, usage)
 
 type Options = {
   templates :: Array String,
+  prefixPath :: String,
   debug :: Boolean
 }
 
@@ -18,10 +19,14 @@ getOpts :: forall eff. Eff ( err :: EXCEPTION , console :: CONSOLE | eff ) Optio
 getOpts = runY setup parser
   where
     parser :: Y (Eff ( err :: EXCEPTION , console :: CONSOLE | eff ) Options)
-    parser = (\templates debug -> pure {templates, debug})
-      <$> yarg "w" ["word"]
-        (Just "A word")
-        (Right "At least one word is required")
+    parser = (\templates prefixPath debug -> pure {templates, prefixPath, debug})
+      <$> yarg "t" ["template"]
+        (Just "template file")
+        (Right "At least one template is required")
+        false
+      <*> yarg "p" ["prefix", "path"]
+        (Just "local output path prefix")
+        (Right "")
         false
       <*> flag "d" []
         (Just "debug")

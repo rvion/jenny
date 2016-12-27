@@ -12,12 +12,13 @@ import Run (applyTemplate)
 
 main :: forall eff. M eff Unit
 main = do
-  {templates, debug} <- getOpts
+  {templates, debug, prefixPath} <- getOpts
   if templates == []
     then log "no templates given, exiting."
     else do
       log "ok"
-      for_ templates (applyTemplate debug)
+      for_ templates \templatePath ->
+        applyTemplate debug {templatePath,prefixPath}
 
 type M eff a = Eff
   ( buffer :: BUFFER

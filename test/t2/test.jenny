@@ -1,6 +1,7 @@
-%% FILE out/ok.txt
+%% FILE ok.txt
 this is ok. {{= 3+3}}
+plup
 // %% HOLE demo
-
-%% FILE out/ok2.txt
+plop
+%% FILE ok2.txt
 this is ok. {{= 3+2}}

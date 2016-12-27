@@ -42,11 +42,11 @@ main = do
                       , ""
                       , "%% FILE ok3.txt"
                       , "this is ok. {{= 3+2}}"]
-                targets <- liftEff $ buildTargets "test" input
+                targets <- liftEff $ buildTargets {prefixPath: "out", templatePath: "demo"} input
                 Assert.equal (targets # map (_.filepath))
-                    [ "ok.txt"
-                    , "ok2.txt"
-                    , "ok3.txt"
+                    [ "./out/ok.txt"
+                    , "./out/ok2.txt"
+                    , "./out/ok3.txt"
                     ]
                 Assert.equal (targets # map (_.content))
                     [ "this is ok. {{= 3+3}}"
@@ -59,7 +59,10 @@ main = do
 
                   -- apply template
                   liftEff $ do
-                    applyTemplate false (jennyPath folder)
+                    applyTemplate false ({
+                      templatePath: jennyPath folder,
+                      prefixPath: "out"
+                      })
                     pure true
 
                   correctFolderExist <- exists (correctPath folder)

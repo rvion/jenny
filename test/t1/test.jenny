@@ -1,5 +1,5 @@
-%% FILE out/ok.txt
+%% FILE ok.txt
 this is ok. {{= 3+3}}
 
-%% FILE out/ok2.txt
+%% FILE ok2.txt
 this is ok. {{= 3+2}}
