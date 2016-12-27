@@ -9,7 +9,7 @@ _the programmer assistant_
 git clone https://github.com/rvion/jenny
 bower i
 npm i
-writing target
+pulp -w --then "pulp test" build
 ```
 
 ### Template engines
