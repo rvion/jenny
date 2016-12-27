@@ -1,9 +1,0 @@
-{{#each tables}}
-FILE gen/{{@key}}.gen
-<div class="entry">
-  ## {{@key}}
-  {{#each columns}}
-    {{@key}}: {{this}}
-  {{/each}}
-</div>
-{{/each}}
