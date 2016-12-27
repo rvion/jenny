@@ -1,5 +1,6 @@
 var fs = require('fs');
 var PostgresSchema = require('pg-json-schema-export');
+
 var connection = {
   'user': 'rvion',
   'password': '',
@@ -7,22 +8,21 @@ var connection = {
   'port': 5432,
   'database': ''
 };
-PostgresSchema.toJSON(connection, 'public')
+
+PostgresSchema
+  .toJSON(connection, 'public')
   .then(function (schemas) {
-    // handle json object
-    // console.log(schemas)
     fs.writeFile(
-      "db/test.dump.json",
+      __dirname + "/db-schema.json",
       JSON.stringify(schemas, null, 4),
       function(err) {
-        if(err) {
-            return console.log(err);
-        }
+        if(err) {return console.log(err); }
         console.log("The file was saved!");
+        process.exit(0)
     });
     // console.log(schemas.tables.actor.columns)
   })
   .catch(function (error) {
-    console.log("!!!!!!!!!error", error)
-    // handle error
+    console.log("an error occured", error)
+    process.exit(1)
   });
