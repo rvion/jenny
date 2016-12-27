@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "rm -rf gen/* && node main.js -d -w ./test/test1.jenny > .dbg"
+    "check": "rm -rf gen/* && node main.js -d -w ./test/test1.jenny > .dbg",
+    "test": "pulp test"
   },
   "repository": {
     "type": "git",
