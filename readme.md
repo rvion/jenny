@@ -6,10 +6,11 @@ _the programmer assistant_
 ### dev
 
 ```shell
-git clone https://github.com/rvion/jenny
-bower i
-npm i
-pulp -w --then "pulp test" build
+#git clone https://github.com/rvion/jenny
+git clone git@github.com:rvion/jenny.git
+bower install
+npm install
+pulp --watch --then "pulp test" build
 ```
 
 ### Template engines
