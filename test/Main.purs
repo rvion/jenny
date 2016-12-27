@@ -28,6 +28,28 @@ main = do
         rootFiles
 
     runTest do
+        suite "parsing works" $
+            test "targets" do
+                let input = joinWith "\n"
+                      [ "FILE ok.txt"
+                      , "this is ok. {{= 3+3}}"
+                      , "FILE ok2.txt"
+                      , "this is ok. {{= 3+3}}"
+                      , ""
+                      , "FILE ok3.txt"
+                      , "this is ok. {{= 3+2}}"]
+                    targets = buildTargets input
+                Assert.equal (targets # map (_.filepath))
+                    [ "ok.txt"
+                    , "ok2.txt"
+                    , "ok3.txt"
+                    ]
+                Assert.equal (targets # map (_.content))
+                    [ "this is ok. {{= 3+3}}"
+                    , "this is ok. {{= 3+3}}\n"
+                    , "this is ok. {{= 3+2}}"
+                    ]
+
         suite "generated code match" $
             for_ folders \folder -> test folder do
 
