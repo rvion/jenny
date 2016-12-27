@@ -1,0 +1,2057 @@
+{
+    "counts": {
+        "sequences": 3,
+        "constraints": 43,
+        "tables": 25,
+        "columns": 135
+    },
+    "tables": {
+        "actor": {
+            "table_schema": "public",
+            "table_name": "actor",
+            "obj_description": null,
+            "columns": {
+                "actor_id": {
+                    "table_schema": "public",
+                    "table_name": "actor",
+                    "column_name": "actor_id",
+                    "column_default": "nextval('public.actor_actor_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "first_name": {
+                    "table_schema": "public",
+                    "table_name": "actor",
+                    "column_name": "first_name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_name": {
+                    "table_schema": "public",
+                    "table_name": "actor",
+                    "column_name": "last_name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "actor",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "actor_info": {
+            "table_schema": "public",
+            "table_name": "actor_info",
+            "obj_description": null,
+            "columns": {
+                "actor_id": {
+                    "table_schema": "public",
+                    "table_name": "actor_info",
+                    "column_name": "actor_id",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "first_name": {
+                    "table_schema": "public",
+                    "table_name": "actor_info",
+                    "column_name": "first_name",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_name": {
+                    "table_schema": "public",
+                    "table_name": "actor_info",
+                    "column_name": "last_name",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "film_info": {
+                    "table_schema": "public",
+                    "table_name": "actor_info",
+                    "column_name": "film_info",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                }
+            }
+        },
+        "address": {
+            "table_schema": "public",
+            "table_name": "address",
+            "obj_description": null,
+            "columns": {
+                "address_id": {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "address_id",
+                    "column_default": "nextval('public.address_address_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "address": {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "address",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "address2": {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "address2",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "district": {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "district",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "city_id": {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "city_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "postal_code": {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "postal_code",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "phone": {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "phone",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "category": {
+            "table_schema": "public",
+            "table_name": "category",
+            "obj_description": null,
+            "columns": {
+                "category_id": {
+                    "table_schema": "public",
+                    "table_name": "category",
+                    "column_name": "category_id",
+                    "column_default": "nextval('public.category_category_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "name": {
+                    "table_schema": "public",
+                    "table_name": "category",
+                    "column_name": "name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "category",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "city": {
+            "table_schema": "public",
+            "table_name": "city",
+            "obj_description": null,
+            "columns": {
+                "city_id": {
+                    "table_schema": "public",
+                    "table_name": "city",
+                    "column_name": "city_id",
+                    "column_default": "nextval('public.city_city_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "city": {
+                    "table_schema": "public",
+                    "table_name": "city",
+                    "column_name": "city",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "country_id": {
+                    "table_schema": "public",
+                    "table_name": "city",
+                    "column_name": "country_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "city",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "country": {
+            "table_schema": "public",
+            "table_name": "country",
+            "obj_description": null,
+            "columns": {
+                "country_id": {
+                    "table_schema": "public",
+                    "table_name": "country",
+                    "column_name": "country_id",
+                    "column_default": "nextval('public.country_country_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "country": {
+                    "table_schema": "public",
+                    "table_name": "country",
+                    "column_name": "country",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "country",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "customer": {
+            "table_schema": "public",
+            "table_name": "customer",
+            "obj_description": null,
+            "columns": {
+                "customer_id": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "customer_id",
+                    "column_default": "nextval('public.customer_customer_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "store_id": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "store_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "first_name": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "first_name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_name": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "last_name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "email": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "email",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "address_id": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "address_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "activebool": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "activebool",
+                    "column_default": "true",
+                    "is_nullable": false,
+                    "data_type": "boolean",
+                    "col_description": null
+                },
+                "create_date": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "create_date",
+                    "column_default": "('now'::text)::date",
+                    "is_nullable": false,
+                    "data_type": "date",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": true,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                },
+                "active": {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "active",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "integer",
+                    "col_description": null
+                }
+            }
+        },
+        "customer_list": {
+            "table_schema": "public",
+            "table_name": "customer_list",
+            "obj_description": null,
+            "columns": {
+                "id": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "id",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "name": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "name",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "address": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "address",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "zip code": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "zip code",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "phone": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "phone",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "city": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "city",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "country": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "country",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "notes": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "notes",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "sid": {
+                    "table_schema": "public",
+                    "table_name": "customer_list",
+                    "column_name": "sid",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "smallint",
+                    "col_description": null
+                }
+            }
+        },
+        "film": {
+            "table_schema": "public",
+            "table_name": "film",
+            "obj_description": null,
+            "columns": {
+                "film_id": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "film_id",
+                    "column_default": "nextval('public.film_film_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "title": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "title",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "description": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "description",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "release_year": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "release_year",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "language_id": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "language_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "rental_duration": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "rental_duration",
+                    "column_default": "3",
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "rental_rate": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "rental_rate",
+                    "column_default": "4.99",
+                    "is_nullable": false,
+                    "data_type": "numeric",
+                    "col_description": null
+                },
+                "length": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "length",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "replacement_cost": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "replacement_cost",
+                    "column_default": "19.99",
+                    "is_nullable": false,
+                    "data_type": "numeric",
+                    "col_description": null
+                },
+                "rating": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "rating",
+                    "column_default": "'G'::public.mpaa_rating",
+                    "is_nullable": true,
+                    "data_type": "USER-DEFINED",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                },
+                "special_features": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "special_features",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "ARRAY",
+                    "col_description": null
+                },
+                "fulltext": {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "fulltext",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "tsvector",
+                    "col_description": null
+                }
+            }
+        },
+        "film_actor": {
+            "table_schema": "public",
+            "table_name": "film_actor",
+            "obj_description": null,
+            "columns": {
+                "actor_id": {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "actor_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "film_id": {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "film_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "film_category": {
+            "table_schema": "public",
+            "table_name": "film_category",
+            "obj_description": null,
+            "columns": {
+                "film_id": {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "film_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "category_id": {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "category_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "film_list": {
+            "table_schema": "public",
+            "table_name": "film_list",
+            "obj_description": null,
+            "columns": {
+                "fid": {
+                    "table_schema": "public",
+                    "table_name": "film_list",
+                    "column_name": "fid",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "title": {
+                    "table_schema": "public",
+                    "table_name": "film_list",
+                    "column_name": "title",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "description": {
+                    "table_schema": "public",
+                    "table_name": "film_list",
+                    "column_name": "description",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "category": {
+                    "table_schema": "public",
+                    "table_name": "film_list",
+                    "column_name": "category",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "price": {
+                    "table_schema": "public",
+                    "table_name": "film_list",
+                    "column_name": "price",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "numeric",
+                    "col_description": null
+                },
+                "length": {
+                    "table_schema": "public",
+                    "table_name": "film_list",
+                    "column_name": "length",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "rating": {
+                    "table_schema": "public",
+                    "table_name": "film_list",
+                    "column_name": "rating",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "USER-DEFINED",
+                    "col_description": null
+                },
+                "actors": {
+                    "table_schema": "public",
+                    "table_name": "film_list",
+                    "column_name": "actors",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                }
+            }
+        },
+        "foo": {
+            "table_schema": "public",
+            "table_name": "foo",
+            "obj_description": null,
+            "columns": {
+                "id": {
+                    "table_schema": "public",
+                    "table_name": "foo",
+                    "column_name": "id",
+                    "column_default": "nextval('public.foo_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "name": {
+                    "table_schema": "public",
+                    "table_name": "foo",
+                    "column_name": "name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "text",
+                    "col_description": null
+                }
+            }
+        },
+        "inventory": {
+            "table_schema": "public",
+            "table_name": "inventory",
+            "obj_description": null,
+            "columns": {
+                "inventory_id": {
+                    "table_schema": "public",
+                    "table_name": "inventory",
+                    "column_name": "inventory_id",
+                    "column_default": "nextval('public.inventory_inventory_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "film_id": {
+                    "table_schema": "public",
+                    "table_name": "inventory",
+                    "column_name": "film_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "store_id": {
+                    "table_schema": "public",
+                    "table_name": "inventory",
+                    "column_name": "store_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "inventory",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "language": {
+            "table_schema": "public",
+            "table_name": "language",
+            "obj_description": null,
+            "columns": {
+                "language_id": {
+                    "table_schema": "public",
+                    "table_name": "language",
+                    "column_name": "language_id",
+                    "column_default": "nextval('public.language_language_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "name": {
+                    "table_schema": "public",
+                    "table_name": "language",
+                    "column_name": "name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "language",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "nicer_but_slower_film_list": {
+            "table_schema": "public",
+            "table_name": "nicer_but_slower_film_list",
+            "obj_description": null,
+            "columns": {
+                "fid": {
+                    "table_schema": "public",
+                    "table_name": "nicer_but_slower_film_list",
+                    "column_name": "fid",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "title": {
+                    "table_schema": "public",
+                    "table_name": "nicer_but_slower_film_list",
+                    "column_name": "title",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "description": {
+                    "table_schema": "public",
+                    "table_name": "nicer_but_slower_film_list",
+                    "column_name": "description",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "category": {
+                    "table_schema": "public",
+                    "table_name": "nicer_but_slower_film_list",
+                    "column_name": "category",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "price": {
+                    "table_schema": "public",
+                    "table_name": "nicer_but_slower_film_list",
+                    "column_name": "price",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "numeric",
+                    "col_description": null
+                },
+                "length": {
+                    "table_schema": "public",
+                    "table_name": "nicer_but_slower_film_list",
+                    "column_name": "length",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "rating": {
+                    "table_schema": "public",
+                    "table_name": "nicer_but_slower_film_list",
+                    "column_name": "rating",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "USER-DEFINED",
+                    "col_description": null
+                },
+                "actors": {
+                    "table_schema": "public",
+                    "table_name": "nicer_but_slower_film_list",
+                    "column_name": "actors",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                }
+            }
+        },
+        "payment": {
+            "table_schema": "public",
+            "table_name": "payment",
+            "obj_description": null,
+            "columns": {
+                "payment_id": {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "payment_id",
+                    "column_default": "nextval('public.payment_payment_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "customer_id": {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "customer_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "staff_id": {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "staff_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "rental_id": {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "rental_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "amount": {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "amount",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "numeric",
+                    "col_description": null
+                },
+                "payment_date": {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "payment_date",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "rental": {
+            "table_schema": "public",
+            "table_name": "rental",
+            "obj_description": null,
+            "columns": {
+                "rental_id": {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "rental_id",
+                    "column_default": "nextval('public.rental_rental_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "rental_date": {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "rental_date",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                },
+                "inventory_id": {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "inventory_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "customer_id": {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "customer_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "return_date": {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "return_date",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                },
+                "staff_id": {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "staff_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "sales_by_film_category": {
+            "table_schema": "public",
+            "table_name": "sales_by_film_category",
+            "obj_description": null,
+            "columns": {
+                "category": {
+                    "table_schema": "public",
+                    "table_name": "sales_by_film_category",
+                    "column_name": "category",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "total_sales": {
+                    "table_schema": "public",
+                    "table_name": "sales_by_film_category",
+                    "column_name": "total_sales",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "numeric",
+                    "col_description": null
+                }
+            }
+        },
+        "sales_by_store": {
+            "table_schema": "public",
+            "table_name": "sales_by_store",
+            "obj_description": null,
+            "columns": {
+                "store": {
+                    "table_schema": "public",
+                    "table_name": "sales_by_store",
+                    "column_name": "store",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "manager": {
+                    "table_schema": "public",
+                    "table_name": "sales_by_store",
+                    "column_name": "manager",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "total_sales": {
+                    "table_schema": "public",
+                    "table_name": "sales_by_store",
+                    "column_name": "total_sales",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "numeric",
+                    "col_description": null
+                }
+            }
+        },
+        "staff": {
+            "table_schema": "public",
+            "table_name": "staff",
+            "obj_description": null,
+            "columns": {
+                "staff_id": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "staff_id",
+                    "column_default": "nextval('public.staff_staff_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "first_name": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "first_name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_name": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "last_name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "address_id": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "address_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "email": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "email",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "store_id": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "store_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "active": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "active",
+                    "column_default": "true",
+                    "is_nullable": false,
+                    "data_type": "boolean",
+                    "col_description": null
+                },
+                "username": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "username",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "password": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "password",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                },
+                "picture": {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "picture",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "bytea",
+                    "col_description": null
+                }
+            }
+        },
+        "staff_list": {
+            "table_schema": "public",
+            "table_name": "staff_list",
+            "obj_description": null,
+            "columns": {
+                "id": {
+                    "table_schema": "public",
+                    "table_name": "staff_list",
+                    "column_name": "id",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "name": {
+                    "table_schema": "public",
+                    "table_name": "staff_list",
+                    "column_name": "name",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "address": {
+                    "table_schema": "public",
+                    "table_name": "staff_list",
+                    "column_name": "address",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "zip code": {
+                    "table_schema": "public",
+                    "table_name": "staff_list",
+                    "column_name": "zip code",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "phone": {
+                    "table_schema": "public",
+                    "table_name": "staff_list",
+                    "column_name": "phone",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "city": {
+                    "table_schema": "public",
+                    "table_name": "staff_list",
+                    "column_name": "city",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "country": {
+                    "table_schema": "public",
+                    "table_name": "staff_list",
+                    "column_name": "country",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "character varying",
+                    "col_description": null
+                },
+                "sid": {
+                    "table_schema": "public",
+                    "table_name": "staff_list",
+                    "column_name": "sid",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "smallint",
+                    "col_description": null
+                }
+            }
+        },
+        "store": {
+            "table_schema": "public",
+            "table_name": "store",
+            "obj_description": null,
+            "columns": {
+                "store_id": {
+                    "table_schema": "public",
+                    "table_name": "store",
+                    "column_name": "store_id",
+                    "column_default": "nextval('public.store_store_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "manager_staff_id": {
+                    "table_schema": "public",
+                    "table_name": "store",
+                    "column_name": "manager_staff_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "address_id": {
+                    "table_schema": "public",
+                    "table_name": "store",
+                    "column_name": "address_id",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "smallint",
+                    "col_description": null
+                },
+                "last_update": {
+                    "table_schema": "public",
+                    "table_name": "store",
+                    "column_name": "last_update",
+                    "column_default": "now()",
+                    "is_nullable": false,
+                    "data_type": "timestamp without time zone",
+                    "col_description": null
+                }
+            }
+        },
+        "table_name": {
+            "table_schema": "public",
+            "table_name": "table_name",
+            "obj_description": null,
+            "columns": {
+                "id": {
+                    "table_schema": "public",
+                    "table_name": "table_name",
+                    "column_name": "id",
+                    "column_default": "nextval('public.table_name_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "bigint",
+                    "col_description": null
+                },
+                "name": {
+                    "table_schema": "public",
+                    "table_name": "table_name",
+                    "column_name": "name",
+                    "column_default": null,
+                    "is_nullable": false,
+                    "data_type": "text",
+                    "col_description": null
+                }
+            }
+        },
+        "users": {
+            "table_schema": "public",
+            "table_name": "users",
+            "obj_description": null,
+            "columns": {
+                "name": {
+                    "table_schema": "public",
+                    "table_name": "users",
+                    "column_name": "name",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                },
+                "id": {
+                    "table_schema": "public",
+                    "table_name": "users",
+                    "column_name": "id",
+                    "column_default": "nextval('public.users_id_seq'::regclass)",
+                    "is_nullable": false,
+                    "data_type": "integer",
+                    "col_description": null
+                },
+                "column4": {
+                    "table_schema": "public",
+                    "table_name": "users",
+                    "column_name": "column4",
+                    "column_default": null,
+                    "is_nullable": true,
+                    "data_type": "text",
+                    "col_description": null
+                }
+            }
+        }
+    },
+    "constraints": {
+        "actor": {
+            "actor_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "actor",
+                    "column_name": "actor_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "actor_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "actor",
+                    "referenced_column": "actor_id"
+                }
+            ]
+        },
+        "address": {
+            "city_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "city_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "fk_address_city",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "city",
+                    "referenced_column": "city_id"
+                }
+            ],
+            "address_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "address",
+                    "column_name": "address_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "address_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "address",
+                    "referenced_column": "address_id"
+                }
+            ]
+        },
+        "category": {
+            "category_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "category",
+                    "column_name": "category_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "category_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "category",
+                    "referenced_column": "category_id"
+                }
+            ]
+        },
+        "city": {
+            "city_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "city",
+                    "column_name": "city_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "city_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "city",
+                    "referenced_column": "city_id"
+                }
+            ],
+            "country_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "city",
+                    "column_name": "country_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "fk_city",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "country",
+                    "referenced_column": "country_id"
+                }
+            ]
+        },
+        "country": {
+            "country_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "country",
+                    "column_name": "country_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "country_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "country",
+                    "referenced_column": "country_id"
+                }
+            ]
+        },
+        "customer": {
+            "address_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "address_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "customer_address_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "address",
+                    "referenced_column": "address_id"
+                }
+            ],
+            "customer_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "customer",
+                    "column_name": "customer_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "customer_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "customer",
+                    "referenced_column": "customer_id"
+                }
+            ]
+        },
+        "film": {
+            "language_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "language_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_language_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "language",
+                    "referenced_column": "language_id"
+                }
+            ],
+            "film_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "film",
+                    "column_name": "film_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film",
+                    "referenced_column": "film_id"
+                }
+            ]
+        },
+        "film_actor": {
+            "actor_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "actor_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_actor_actor_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "actor",
+                    "referenced_column": "actor_id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "actor_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_actor_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film_actor",
+                    "referenced_column": "film_id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "actor_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_actor_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film_actor",
+                    "referenced_column": "actor_id"
+                }
+            ],
+            "film_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "film_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_actor_film_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film",
+                    "referenced_column": "film_id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "film_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_actor_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film_actor",
+                    "referenced_column": "actor_id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "film_actor",
+                    "column_name": "film_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_actor_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film_actor",
+                    "referenced_column": "film_id"
+                }
+            ]
+        },
+        "film_category": {
+            "category_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "category_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_category_category_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "category",
+                    "referenced_column": "category_id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "category_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_category_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film_category",
+                    "referenced_column": "film_id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "category_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_category_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film_category",
+                    "referenced_column": "category_id"
+                }
+            ],
+            "film_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "film_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_category_film_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film",
+                    "referenced_column": "film_id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "film_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_category_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film_category",
+                    "referenced_column": "film_id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "film_category",
+                    "column_name": "film_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "film_category_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film_category",
+                    "referenced_column": "category_id"
+                }
+            ]
+        },
+        "foo": {
+            "id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "foo",
+                    "column_name": "id",
+                    "constraint_schema": "public",
+                    "constraint_name": "foo_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "cogitoa",
+                    "referenced_table": "foo",
+                    "referenced_column": "id"
+                },
+                {
+                    "table_schema": "public",
+                    "table_name": "foo",
+                    "column_name": "id",
+                    "constraint_schema": "public",
+                    "constraint_name": "foo_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "foo",
+                    "referenced_column": "id"
+                }
+            ]
+        },
+        "inventory": {
+            "inventory_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "inventory",
+                    "column_name": "inventory_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "inventory_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "inventory",
+                    "referenced_column": "inventory_id"
+                }
+            ],
+            "film_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "inventory",
+                    "column_name": "film_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "inventory_film_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "film",
+                    "referenced_column": "film_id"
+                }
+            ]
+        },
+        "language": {
+            "language_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "language",
+                    "column_name": "language_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "language_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "language",
+                    "referenced_column": "language_id"
+                }
+            ]
+        },
+        "payment": {
+            "customer_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "customer_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "payment_customer_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "customer",
+                    "referenced_column": "customer_id"
+                }
+            ],
+            "payment_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "payment_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "payment_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "payment",
+                    "referenced_column": "payment_id"
+                }
+            ],
+            "rental_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "rental_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "payment_rental_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "rental",
+                    "referenced_column": "rental_id"
+                }
+            ],
+            "staff_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "payment",
+                    "column_name": "staff_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "payment_staff_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "staff",
+                    "referenced_column": "staff_id"
+                }
+            ]
+        },
+        "rental": {
+            "inventory_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "inventory_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "rental_inventory_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "inventory",
+                    "referenced_column": "inventory_id"
+                }
+            ],
+            "staff_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "staff_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "rental_staff_id_key",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "staff",
+                    "referenced_column": "staff_id"
+                }
+            ],
+            "rental_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "rental_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "rental_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "rental",
+                    "referenced_column": "rental_id"
+                }
+            ],
+            "customer_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "rental",
+                    "column_name": "customer_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "rental_customer_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "customer",
+                    "referenced_column": "customer_id"
+                }
+            ]
+        },
+        "staff": {
+            "staff_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "staff_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "staff_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "staff",
+                    "referenced_column": "staff_id"
+                }
+            ],
+            "address_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "staff",
+                    "column_name": "address_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "staff_address_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "address",
+                    "referenced_column": "address_id"
+                }
+            ]
+        },
+        "store": {
+            "store_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "store",
+                    "column_name": "store_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "store_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "store",
+                    "referenced_column": "store_id"
+                }
+            ],
+            "manager_staff_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "store",
+                    "column_name": "manager_staff_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "store_manager_staff_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "staff",
+                    "referenced_column": "staff_id"
+                }
+            ],
+            "address_id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "store",
+                    "column_name": "address_id",
+                    "constraint_schema": "public",
+                    "constraint_name": "store_address_id_fkey",
+                    "constraint_type": "FOREIGN KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "address",
+                    "referenced_column": "address_id"
+                }
+            ]
+        },
+        "table_name": {
+            "id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "table_name",
+                    "column_name": "id",
+                    "constraint_schema": "public",
+                    "constraint_name": "table_name_pkey",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "table_name",
+                    "referenced_column": "id"
+                }
+            ]
+        },
+        "users": {
+            "id": [
+                {
+                    "table_schema": "public",
+                    "table_name": "users",
+                    "column_name": "id",
+                    "constraint_schema": "public",
+                    "constraint_name": "pk_users",
+                    "constraint_type": "PRIMARY KEY",
+                    "check_clause": null,
+                    "referenced_schema": "public",
+                    "referenced_table": "users",
+                    "referenced_column": "id"
+                }
+            ]
+        }
+    },
+    "sequences": {
+        "foo": {
+            "id": {
+                "table_schema": "public",
+                "table_name": "users",
+                "column_name": "id",
+                "sequence_name": "users_id_seq",
+                "start_value": "1",
+                "minimum_value": "1",
+                "increment": "1"
+            }
+        },
+        "table_name": {
+            "id": {
+                "table_schema": "public",
+                "table_name": "users",
+                "column_name": "id",
+                "sequence_name": "users_id_seq",
+                "start_value": "1",
+                "minimum_value": "1",
+                "increment": "1"
+            }
+        },
+        "users": {
+            "id": {
+                "table_schema": "public",
+                "table_name": "users",
+                "column_name": "id",
+                "sequence_name": "users_id_seq",
+                "start_value": "1",
+                "minimum_value": "1",
+                "increment": "1"
+            }
+        }
+    }
+}
