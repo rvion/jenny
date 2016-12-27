@@ -6,3 +6,5 @@
 /.psa*
 
 gen/*
+
+test/t1/out/*.txt
