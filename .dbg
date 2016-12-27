@@ -1,25 +1,3 @@
-writing target gen/users.gen
-writing target gen/table_name.gen
-writing target gen/store.gen
-writing target gen/staff_list.gen
-writing target gen/staff.gen
-writing target gen/sales_by_store.gen
-writing target gen/sales_by_film_category.gen
-writing target gen/rental.gen
-writing target gen/payment.gen
-writing target gen/nicer_but_slower_film_list.gen
-writing target gen/language.gen
-writing target gen/inventory.gen
-writing target gen/foo.gen
-writing target gen/film_list.gen
-writing target gen/film_category.gen
-writing target gen/film_actor.gen
-writing target gen/film.gen
-writing target gen/customer_list.gen
-writing target gen/customer.gen
-writing target gen/country.gen
-writing target gen/city.gen
-writing target gen/category.gen
-writing target gen/address.gen
-writing target gen/actor_info.gen
-writing target gen/actor.gen
+ok
+foo FILE gen/foo.gen<div class="entry"> 6</div>
+0
