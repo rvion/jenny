@@ -10,9 +10,9 @@ import Data.Array (filterM)
 import Data.Foldable (for_)
 import Data.String (joinWith)
 import Node.Encoding (Encoding(..))
-import Node.FS.Aff (readdir)
+import Node.FS.Aff (exists, readdir)
 import Node.FS.Stats (isDirectory)
-import Run (applyTemplate, buildTargets)
+import Run (applyTemplate, buildTargets, getHole)
 import Test.Unit (suite, test)
 import Test.Unit.Main (runTest)
 
@@ -28,17 +28,21 @@ main = do
         rootFiles
 
     runTest do
-        suite "parsing works" $
+        suite "parsing works" do
+            test "getHole" do
+              Assert.equal
+                (getHole "t" "// HOLE t START\n fodezd\nzeo\n// HOLE t END")
+                (" fodezd\nzeo")
             test "targets" do
                 let input = joinWith "\n"
-                      [ "FILE ok.txt"
+                      [ "%% FILE ok.txt"
                       , "this is ok. {{= 3+3}}"
-                      , "FILE ok2.txt"
+                      , "%% FILE ok2.txt"
                       , "this is ok. {{= 3+3}}"
                       , ""
-                      , "FILE ok3.txt"
+                      , "%% FILE ok3.txt"
                       , "this is ok. {{= 3+2}}"]
-                    targets = buildTargets input
+                targets <- liftEff $ buildTargets "test" input
                 Assert.equal (targets # map (_.filepath))
                     [ "ok.txt"
                     , "ok2.txt"
@@ -58,7 +62,8 @@ main = do
                     applyTemplate false (jennyPath folder)
                     pure true
 
-                  when true do
+                  correctFolderExist <- exists (correctPath folder)
+                  when correctFolderExist do
                     -- FIXME check recursively
                     files <- readdir (correctPath folder)
                     for_ files \file -> do

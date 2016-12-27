@@ -1,5 +1,6 @@
 %% FILE out/ok.txt
 this is ok. {{= 3+3}}
+// %% HOLE demo
 
 %% FILE out/ok2.txt
 this is ok. {{= 3+2}}
