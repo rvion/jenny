@@ -13,9 +13,11 @@
     "purescript-parsing": "^3.0.1",
     "purescript-generics": "^3.1.0",
     "purescript-maps": "^2.0.1",
-    "purescript-yargs": "^2.0.0"
+    "purescript-yargs": "^2.0.0",
+    "purescript-node-fs-aff": "^3.0.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "^2.0.0"
+    "purescript-psci-support": "^2.0.0",
+    "purescript-test-unit": "^10.0.1"
   }
 }
