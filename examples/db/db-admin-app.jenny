@@ -1,0 +1,10 @@
+%% FILE ok.txt
+this is good
+
+%% FILE ok2ee.txt
+am the boss
+%% FILE ok2.txt
+this is good-ish
+{{~ ["apple", "banana", "orange"] :k}}
+# {{=k}}
+{{~}}
