@@ -3,10 +3,12 @@ module Util where
 import Prelude
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Exception (EXCEPTION)
+import Data.Maybe (Maybe(..))
 import Node.Buffer (BUFFER, fromString, toString)
 import Node.Encoding (Encoding(..))
 import Node.FS (FS)
-import Node.FS.Sync (readFile, writeFile)
+import Node.FS.Sync (exists, readFile, writeFile)
+import Node.Path (FilePath)
 
 type FileEffets eff =
   ( buffer :: BUFFER
@@ -16,10 +18,14 @@ type FileEffets eff =
   )
 
 getFile :: forall eff.
-  String -> Eff (FileEffets eff) String
-getFile str = do
-  buf <- readFile str
-  toString UTF8 buf
+  FilePath -> Eff (FileEffets eff) (Maybe String)
+getFile fp = do
+  exst <- exists fp
+  if exst
+    then do
+      buf <- readFile fp
+      Just <$> toString UTF8 buf
+    else pure Nothing
 
 putFile :: forall eff.
   String -> String -> Eff (FileEffets eff) Unit

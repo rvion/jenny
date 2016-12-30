@@ -3,14 +3,14 @@ module Run where
 import Prelude
 import Data.Array as Array
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (log, logShow)
+import Control.Monad.Eff.Console (log)
 import Data.Array (foldM, snoc, takeWhile, uncons)
 import Data.Foldable (for_)
-import Data.Maybe (Maybe(..))
+import Data.Maybe (Maybe(..), fromMaybe)
 import Data.String (Pattern(Pattern), joinWith, split, trim)
-import Data.Tuple (Tuple(..))
+import Data.Tuple (Tuple)
 import Diff (showDiff)
-import Node.FS.Sync (exists)
+
 import Node.Path (FilePath, dirname)
 import Partial.Unsafe (unsafeCrashWith)
 import Template (dot)
@@ -27,25 +27,24 @@ type OptionsP2 = {
 }
 applyTemplate :: Boolean -> OptionsP2 -> Eff _ Unit
 applyTemplate debug opts = do
-  fExists <- exists opts.templatePath
-  if fExists
-    then do
-      input <- getFile opts.templatePath
+  mbInput <- getFile opts.templatePath
+  case mbInput of
+    Nothing -> log "[jenny] file does not exist"
+    Just input -> do
       -- context <- getFile dbPath
       let out = dot.compile input (unsafeToJs "{}")
-      when debug $ log "-----------------------------"
+      when debug $ log "[debug] -----------------------------"
       -- when debug $ log out
       targets <- buildTargets opts out
       -- when debug $ logShow (Array.length targets)
       for_ targets \t -> do
         let targetPath = t.filepath
-        goo <- getFile targetPath
-        when debug $ log ("writing target " <> targetPath )
-        showDiff goo t.content 
+        when debug do
+          log ("[debug] writing target " <> targetPath )
+          previousContent <- fromMaybe "" <$> (getFile targetPath)
+          showDiff previousContent t.content
         putFile targetPath t.content
       pure unit
-    else do
-      log "file does not exist"
 
 type Target = {filepath :: String, content:: String}
 
@@ -90,25 +89,17 @@ buildTargets opts str =
           case (state.currentPath) of
             Nothing -> unsafeCrashWith "hole out of file"
             Just f -> do
-              fExists <- exists f
-              logShow (Tuple f fExists)
-              if fExists
-                then do
-                  holeContent <- getHole holename <$> getFile f
-                  pure $ state {
-                      currentContent = state.currentContent <>
-                        [ unwords [comment, "HOLE", holename, "START"]
-                        , holeContent
-                        , unwords [comment, "HOLE", holename, "END"]
-                        ]
-                    }
-                else pure $ state {
-                    currentContent = state.currentContent <>
-                      [ unwords [comment, "HOLE", holename, "START"]
-                      , ""
-                      , unwords [comment, "HOLE", holename, "END"]
-                      ]
-                  }
+              mbContent <- getFile f
+              let holeContent = case mbContent of
+                    Just content -> getHole holename content
+                    Nothing -> ""
+              pure $ state {
+                  currentContent = state.currentContent <>
+                    [ unwords [comment, "HOLE", holename, "START"]
+                    , holeContent
+                    , unwords [comment, "HOLE", holename, "END"]
+                    ]
+                }
 
         ["%%", "FILE", filename] -> pure $
           state {
