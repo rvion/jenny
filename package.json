@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/rvion/jenny#readme",
   "dependencies": {
+    "colors": "^1.1.2",
+    "diff": "^3.2.0",
     "dot": "^1.1.1",
     "fb-watchman": "^1.9.0",
     "handlebars": "^4.0.6",
