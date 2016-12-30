@@ -2,14 +2,14 @@ module Run where
 
 import Prelude
 import Data.Array as Array
-import Control.Alternative (liftA1)
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (log, logShow)
-import Data.Array (cons, foldM, foldl, head, reverse, snoc, takeWhile, uncons)
+import Data.Array (foldM, snoc, takeWhile, uncons)
 import Data.Foldable (for_)
 import Data.Maybe (Maybe(..))
-import Data.String (Pattern(..), drop, indexOf, joinWith, length, split, trim)
+import Data.String (Pattern(Pattern), joinWith, split, trim)
 import Data.Tuple (Tuple(..))
+import Diff (showDiff)
 import Node.FS.Sync (exists)
 import Node.Path (FilePath, dirname)
 import Partial.Unsafe (unsafeCrashWith)
@@ -27,19 +27,25 @@ type OptionsP2 = {
 }
 applyTemplate :: Boolean -> OptionsP2 -> Eff _ Unit
 applyTemplate debug opts = do
-  input <- getFile opts.templatePath
-  -- context <- getFile dbPath
-  let out = dot.compile input (unsafeToJs "{}")
-  when debug $ log "-----------------------------"
-  when debug $ log out
-  targets <- buildTargets opts out
-  when debug $ logShow (Array.length targets)
-  for_ targets \t -> do
-    let targetPath = -- dirname opts.templatePath <> "/" <>
-          t.filepath
-    when debug $ log ("writing target " <> targetPath )
-    putFile targetPath t.content
-  pure unit
+  fExists <- exists opts.templatePath
+  if fExists
+    then do
+      input <- getFile opts.templatePath
+      -- context <- getFile dbPath
+      let out = dot.compile input (unsafeToJs "{}")
+      when debug $ log "-----------------------------"
+      -- when debug $ log out
+      targets <- buildTargets opts out
+      -- when debug $ logShow (Array.length targets)
+      for_ targets \t -> do
+        let targetPath = t.filepath
+        goo <- getFile targetPath
+        when debug $ log ("writing target " <> targetPath )
+        showDiff goo t.content 
+        putFile targetPath t.content
+      pure unit
+    else do
+      log "file does not exist"
 
 type Target = {filepath :: String, content:: String}
 
