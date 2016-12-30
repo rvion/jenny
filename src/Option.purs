@@ -7,7 +7,7 @@ import Control.Monad.Eff.Exception (EXCEPTION)
 import Data.Either (Either(..))
 import Data.Maybe (Maybe(..))
 import Node.Yargs.Applicative (Y, flag, runY, yarg)
-import Node.Yargs.Setup (YargsSetup, example, usage)
+import Node.Yargs.Setup (YargsSetup, defaultHelp, defaultVersion, example, usage)
 
 type Options = {
   templates :: Array String,
@@ -23,11 +23,11 @@ getOpts = runY setup parser
     parser = (\templates  watch  prefixPath  debug ->
          pure {templates, watch, prefixPath, debug})
       <$> yarg "template" ["t"]
-        (Just "template file")
+        (Just "generate given template file\n[you can pass several --template opts]")
         (Left [])
         false
-      <*> yarg "watch" ["w", "live"]
-        (Just "watch *.jenny templates in given folder")
+      <*> yarg "watch-folder" ["w"]
+        (Just "watch *.jenny templates in folder\n[you can specify several folder to watch]")
         (Left [])
         false
       <*> yarg "p" ["prefix", "path"]
@@ -40,5 +40,12 @@ getOpts = runY setup parser
         -- (Just "watch templates and re-run jenny on change")
 
     setup :: YargsSetup
-    setup = usage   "$0 -t Word1 -d"
-         <> example "$0 -t Hello -t World" "Jenny code generator"
+    setup = usage   "Jenny: the programmer assistant"
+         <> example
+              "jenny --template=./foo/demo.jenny --prefix=bar --debug"
+              "# gen ./foo/demo.jenny in ./foo/bar/ folder "
+         <> example
+              "jenny --watch $(pwd)/examples/db/ --debug"
+              "# watch all *.jenny files in "
+         <> defaultHelp -- add --help
+         <> defaultVersion -- add --version
