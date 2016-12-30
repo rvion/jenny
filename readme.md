@@ -2,13 +2,29 @@
 
 _the programmer assistant_
 
-
-
 example usage:
 
 ```sh
-jenny --template examples/db/db-admin-app.jenny --debug
-jenny --watch $(pwd)/examples/db/ --debug
+$ jenny --help
+
+Jenny: the programmer assistant
+
+Options:
+  --help                Show help                                      [boolean]
+  --version             Show version number                            [boolean]
+  --template, -t        generate given template file
+                        [you can pass several --template opts]          [string]
+  --watch-folder, -w    watch *.jenny templates in folder
+                        [you can specify several folder to watch]       [string]
+  -p, --prefix, --path  local output path prefix (default: 'gen')       [string]
+  -d, --debug           debug                                          [boolean]
+
+Examples:
+  # gen ./foo/demo.jenny in ./foo/bar/ folder
+  jenny --template=./foo/demo.jenny --prefix=bar --debug                      
+
+  # watch all *.jenny files in
+  jenny --watch $(pwd)/examples/db/ --debug
 ```
 
 ### dev
@@ -23,51 +39,6 @@ pulp --watch --then "pulp test" build
 
 ### Template engines
 
-  - [handlebarsjs](http://handlebarsjs.com/) ([docs](doc here: https://www.npmjs.com/package/handlebars))
   - [dotjs](https://www.dotjs.io/) ([docs](http://olado.github.io/doT/index.html), [example](https://github.com/olado/doT/blob/master/examples/advancedsnippet.txt))
 
 :memo: dotjs seems better so far.
-
-### Temporary todo
-
-  1. handle holes:
-    ```
-    {{#each files}}
-    <<FILE gen/{{name}}.html>>
-      <div class="entry">
-        -- <<HOLE foobar>>        <- this
-                                     the syntax should change
-        -- <</HOLE foobar>>
-      </div>
-    {{/each}}
-    ```
-  2. several built-in `helpers`
-    - ([see here](https://help.compose.com/docs/connecting-to-postgresql))
-    ```handlebars
-    {{#database postgres://[username]:[password]@[host]:[port]/[database]}}
-      {{#each tables}}
-        {{...}}
-      {{}}
-    {{/datase}}
-    ```
-  3. watch-recompile
-  4. improve CLI
-      ```
-       jenny \
-        -gen ./template:./data \
-        -gen ./template2:./data2 \
-        -watch
-      ```
-  5. add logic in templates
-  6. ability to check templates and give proper errors
-  7. logo
-  8. examples
-
-### Misc ideas:
-
-```
-{{#database postgres://[username]:[password]@[host]:[port]/[database]}}
-{{/database}}
-
-{{=database postgres://[username]:[password]@[host]:[port]/[database]}}
-```
