@@ -2,9 +2,10 @@ module Main where
 
 import Prelude
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
+import Control.Monad.Eff.Console (CONSOLE, errorShow, log)
 import Control.Monad.Eff.Exception (EXCEPTION)
 import Data.Array (length)
+import Data.Either (Either(..))
 import Data.Foldable (for_)
 import Node.Buffer (BUFFER)
 import Node.FS (FS)
@@ -28,14 +29,16 @@ main = do
     client <- newWatchClient
     for_ opts.watch \folderPath -> do
       log ("[jenny] watching *.jenny in " <> folderPath)
-      watch client folderPath "*.jenny"
-        (\fs -> for_ fs \f -> do
+      watch client folderPath "*.jenny" \fs ->
+        for_ fs \f -> do
           let watchedTemplatePath = folderPath <> "/" <> f.name
-          -- log ("foooo" <> watchedTemplatePath)
-          applyTemplate
+          x <- applyTemplate
             opts.debug
             { templatePath: watchedTemplatePath
-            , prefixPath: opts.prefixPath})
+            , prefixPath: opts.prefixPath}
+          case x of
+            Left e -> errorShow e
+            Right _ -> log "done"
 
 type M eff a = Eff
   ( buffer :: BUFFER

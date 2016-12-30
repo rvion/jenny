@@ -2,11 +2,13 @@ module Run where
 
 import Prelude
 import Data.Array as Array
+import Data.String as String
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (log)
+import Control.Monad.Eff.Exception (Error, try)
 import Data.Array (foldM, snoc, takeWhile, uncons)
+import Data.Either (Either)
 import Data.Foldable (for_)
-import Data.String as String
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.String (Pattern(Pattern), joinWith, split, trim)
 import Data.Tuple (Tuple)
@@ -15,20 +17,20 @@ import Node.Path (FilePath, dirname)
 import Partial.Unsafe (unsafeCrashWith)
 import Template (dot)
 import Util (getFile, putFile)
-import Watch (dbg)
+
 
 type OptionsP2 = {
   templatePath :: String,
   prefixPath :: String
 }
-applyTemplate :: Boolean -> OptionsP2 -> Eff _ Unit
-applyTemplate debug opts = do
+applyTemplate :: Boolean -> OptionsP2 -> Eff _ (Either Error Unit)
+applyTemplate debug opts = try do
   mbInput <- getFile opts.templatePath
   case mbInput of
     Nothing -> log "[jenny] file does not exist"
     Just input -> do
+      when debug $ log ("\n[debug] --------" <> opts.templatePath <> "----------")
       out <- dot.compile input (dirname opts.templatePath)
-      when debug $ log ("[debug] --------" <> opts.templatePath <> "----------")
       targets <- buildTargets opts out
       when debug $ log (show (Array.length targets) <> " targets:")
       for_ targets \t -> do
