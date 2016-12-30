@@ -3,6 +3,14 @@
 _the programmer assistant_
 
 
+
+example usage:
+
+```sh
+jenny --template examples/db/db-admin-app.jenny --debug
+jenny --watch $(pwd)/examples/db/ --debug
+```
+
 ### dev
 
 ```shell
