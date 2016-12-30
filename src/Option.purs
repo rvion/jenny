@@ -11,29 +11,33 @@ import Node.Yargs.Setup (YargsSetup, example, usage)
 
 type Options = {
   templates :: Array String,
+  watch :: Array String,
   prefixPath :: String,
-  debug :: Boolean,
-  watch :: Boolean
+  debug :: Boolean
 }
 
 getOpts :: forall eff. Eff ( err :: EXCEPTION , console :: CONSOLE | eff ) Options
 getOpts = runY setup parser
   where
     parser :: Y (Eff ( err :: EXCEPTION , console :: CONSOLE | eff ) Options)
-    parser = (\templates  prefixPath  debug  watch ->
-         pure {templates, prefixPath, debug, watch})
-      <$> yarg "t" ["template"]
+    parser = (\templates  watch  prefixPath  debug ->
+         pure {templates, watch, prefixPath, debug})
+      <$> yarg "template" ["t"]
         (Just "template file")
-        (Right "At least one template is required")
+        (Left [])
+        false
+      <*> yarg "watch" ["w", "live"]
+        (Just "watch *.jenny templates in given folder")
+        (Left [])
         false
       <*> yarg "p" ["prefix", "path"]
-        (Just "local output path prefix")
-        (Right "")
+        (Just "local output path prefix (default: 'gen')")
+        (Left "gen")
         false
       <*> flag "d" ["debug"]
         (Just "debug")
-      <*> flag "w" ["watch", "live"]
-        (Just "debug")
+      -- flag "watch-folder" ["watch", "live", "f"]
+        -- (Just "watch templates and re-run jenny on change")
 
     setup :: YargsSetup
     setup = usage   "$0 -t Word1 -d"
