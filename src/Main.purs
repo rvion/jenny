@@ -31,7 +31,7 @@ main = do
       watch client folderPath "*.jenny"
         (\fs -> for_ fs \f -> do
           let watchedTemplatePath = folderPath <> "/" <> f.name
-          log watchedTemplatePath
+          -- log ("foooo" <> watchedTemplatePath)
           applyTemplate
             opts.debug
             { templatePath: watchedTemplatePath

@@ -42,7 +42,7 @@ exports.watch =
               });
             client.on('subscription', function (resp) {
               if (resp.subscription !== eventName) {return;}
-              console.log("[watchman]", resp.files, "changed")
+              // console.log("[watchman]", resp.files, "changed")
               action(resp.files)();
             });
           }

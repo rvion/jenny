@@ -20,9 +20,9 @@ import Template.Data (Template)
 -- | hello = compile "Hello, {{name}}!"
 -- | ```
 foreign import data Handlebars :: *
-foreign import template :: String -> Template Handlebars
-foreign import render :: Template Handlebars -> String
-foreign import renderWith :: forall a. Template Handlebars -> a -> String
-foreign import compile :: forall a. String -> a -> String
+foreign import template   :: forall eff. String -> Eff eff (Template Handlebars)
+foreign import render     :: forall eff. Template Handlebars -> Eff eff String
+foreign import renderWith :: forall a eff. Template Handlebars -> a -> Eff eff String
+foreign import compile    :: forall a eff. String -> a -> Eff eff String
 
 foreign import helpers :: forall eff a. Eff eff a

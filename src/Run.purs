@@ -6,21 +6,17 @@ import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (log)
 import Data.Array (foldM, snoc, takeWhile, uncons)
 import Data.Foldable (for_)
+import Data.String as String
 import Data.Maybe (Maybe(..), fromMaybe)
 import Data.String (Pattern(Pattern), joinWith, split, trim)
 import Data.Tuple (Tuple)
 import Diff (showDiff)
-
 import Node.Path (FilePath, dirname)
 import Partial.Unsafe (unsafeCrashWith)
 import Template (dot)
 import Util (getFile, putFile)
+import Watch (dbg)
 
-foreign import unsafeToJs :: forall a. String -> a
--- app :: forall eff. Options -> M eff Unit
--- app {templates, debug} =
-
-      -- pure tuni
 type OptionsP2 = {
   templatePath :: String,
   prefixPath :: String
@@ -31,18 +27,19 @@ applyTemplate debug opts = do
   case mbInput of
     Nothing -> log "[jenny] file does not exist"
     Just input -> do
-      -- context <- getFile dbPath
-      let out = dot.compile input (unsafeToJs "{}")
-      when debug $ log "[debug] -----------------------------"
-      -- when debug $ log out
+      out <- dot.compile input (dirname opts.templatePath)
+      when debug $ log ("[debug] --------" <> opts.templatePath <> "----------")
       targets <- buildTargets opts out
-      -- when debug $ logShow (Array.length targets)
+      when debug $ log (show (Array.length targets) <> " targets:")
       for_ targets \t -> do
         let targetPath = t.filepath
         when debug do
-          log ("[debug] writing target " <> targetPath )
+          log ("  - " <> targetPath )
           previousContent <- fromMaybe "" <$> (getFile targetPath)
-          showDiff previousContent t.content
+          if (String.length previousContent < 1000 &&
+              String.length t.content < 1000)
+            then showDiff previousContent t.content
+            else log "    | [file too large]"
         putFile targetPath t.content
       pure unit
 

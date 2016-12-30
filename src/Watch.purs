@@ -17,13 +17,15 @@ foreign import newWatchClient :: forall eff.
   Eff eff WatchClient
 
 foreign import watch :: forall eff.
-  WatchClient
-  -> FilePath -- root dir
+  WatchClient -- ^ watchman client as per the doc
+  -> FilePath -- ^ root dir
   -> String -- ^ match
   -> (Array FileInfos -> Eff eff Unit )  -- ^ action
   -> Eff eff Unit
 
 foreign import debug :: forall eff a. a -> Eff eff Unit
+dbg :: forall eff a. a -> Eff eff Unit
+dbg = debug
 
 testWatch :: forall eff. Eff eff Unit
 testWatch = do

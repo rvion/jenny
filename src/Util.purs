@@ -17,6 +17,9 @@ type FileEffets eff =
   | eff
   )
 
+-- exports.unsafeToJs = JSON.parse
+-- foreign import unsafeToJs :: forall a. String -> a
+
 getFile :: forall eff.
   FilePath -> Eff (FileEffets eff) (Maybe String)
 getFile fp = do

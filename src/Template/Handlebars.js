@@ -11,28 +11,29 @@ exports.helpers = function() {
   return Handlebars.helpers
 }
 
-
 exports.template = function(str){
-  // return function(){
+  return function(){
     return Handlebars.compile(str);
-  // }
+  }
 }
 exports.render = function(template) {
-  // return function(){
+  return function(){
     return template({})
-  // }
+  }
 }
 exports.renderWith = function(template) {
   return function(data) {
-    // return function(){
+    return function(){
       return template(data)
-    // }
+    }
   }
 }
 
 exports.compile = function(source) {
     var template = Handlebars.compile(source);
     return function(context) {
-        return template(context);
+        return function(){
+          return template(context);
+        }
     };
 };
