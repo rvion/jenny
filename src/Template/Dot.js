@@ -1,9 +1,14 @@
 "use strict";
+// \{\{\@(?:\}\}|\s*([\s\S]+?)\|\s*([\w]+)\s*(?:(?<ok>[\w]+)\s*)*?\}\})
 var doT = {
 	version: "1.1.1",
 	templateSettings: {
 		evaluate:    /\{\{([\s\S]+?(\}?)+)\}\}/g,
 		interpolate: /\{\{=([\s\S]+?)\}\}/g,
+		interpolate_indent: /\{\{\|=([\s\S]+?)\}\}/g,
+		stripperl: 	 /\s*\{\{\<\%\}\}/g,
+		stripperr: 	 /\{\{\%\>\}\}\s*/g,
+		stripperlr:  /\s*\{\{\%\}\}\s*/g,
 		encode:      /\{\{!([\s\S]+?)\}\}/g,
 		use:         /\{\{#([\s\S]+?)\}\}/g,
 		useParams:   /(^|[^\w$])def(?:\.|\[[\'\"])([\w$\.]+)(?:[\'\"]\])?\s*\:\s*([\w$\.]+|\"[^\"]+\"|\'[^\']+\'|\{[^\}]+\})/g,
@@ -90,8 +95,15 @@ doT.template = function(tmpl, c, def) {
 	str = ("var out='" + (c.strip ? str.replace(/(^|\r|\n)\t* +| +\t*(\r|\n|$)/g," ")
 				.replace(/\r|\n|\t|\/\*[\s\S]*?\*\//g,""): str)
 		.replace(/'|\\/g, "\\$&")
+		.replace(c.interpolate_indent || skip, function(m, code, offset, init) {
+			console.log(m, code, offset, init)
+			var indent = 0, pad ="";
+			while (init[offset-indent ] != '\n'){indent +=1;pad+=" "}
+			pad = pad.slice(0, -1);
+			return cse.start + "toS("+unescape(code)+",'"+pad+"')" + cse.end;
+		})
 		.replace(c.interpolate || skip, function(m, code) {
-			return cse.start + "toS("+unescape(code)+")" + cse.end;
+			return cse.start + "toS("+unescape(code)+",'')" + cse.end;
 		})
 		.replace(c.encode || skip, function(m, code) {
 			needhtmlencode = true;
@@ -102,12 +114,19 @@ doT.template = function(tmpl, c, def) {
 				(code ? "';}else if(" + unescape(code) + "){out+='" : "';}else{out+='") :
 				(code ? "';if(" + unescape(code) + "){out+='" : "';}out+='");
 		})
-		.replace(c.iterate || skip, function(m, iterate, vname, iname) {
+		.replace(c.iterate || skip, function(m, iterate, kname, vname) {
 			if (!iterate) return "';} } out+='";
-			sid+=1; indv=iname || "i"+sid; iterate=unescape(iterate);
-			return "';var arr"+sid+"="+iterate+";if(arr"+sid+"){var "+vname+","+indv+"=-1,l"+sid+"=arr"+sid+".length-1;while("+indv+"<l"+sid+"){"
-				+vname+"=arr"+sid+"["+indv+"+=1];out+='";
+			sid+=1;
+			kname=kname|| "k";//+sid;
+			vname=vname|| "v";//+sid;
+			iterate=unescape(iterate);
+			return "';var arr"+sid+"="+iterate+";if(arr"+sid+"){for (var "
+				+kname+" in arr"+sid+"){"
+				+vname+"=arr"+sid+"["+kname+"];out+='";
 		})
+		.replace(c.stripperl || skip,'') // only strip at the end to keep strip-indent working
+		.replace(c.stripperr || skip,'')
+		.replace(c.stripperlr || skip,'')
 		.replace(c.evaluate || skip, function(m, code) {
 			return "';" + unescape(code) + "out+='";
 		})
@@ -122,8 +141,10 @@ doT.template = function(tmpl, c, def) {
 			+ doT.encodeHTMLSource.toString() + "(" + (c.doNotSkipEncoded || '') + "));"
 			+ str;
 	}
-	str = 'var toS=function(a){console.log(a);return null!==a&&"object"==typeof a?JSON.stringify(a):a};' + str;
+	str = 'var toS=function(a,pad){console.log(a);return (null!==a&&"object"==typeof a?JSON.stringify(a,null,2):String(a)).replace(/\\n/g,"\\n"+pad)};' + str;
+	// replace(/^/,pad).
 	try {
+		// console.log(str)
 		return new Function(c.varname, str);
 	} catch (e) {
 		/* istanbul ignore else */
@@ -156,6 +177,9 @@ dot.templateSettings.strip = false;
 
 var defs = {
 	file: function(path) {
+  	return fs.readFileSync(defs.templPath + "/" + path, "utf8");
+	},
+	json: function(path) {
   	return fs.readFileSync(defs.templPath + "/" + path, "utf8");
 	}
 };

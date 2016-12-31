@@ -1,10 +1,25 @@
-%% FILE ok.txt
-this is good
+{{##kk=def.file("pg.js")#}}
+{{~[1,2,3,4,5] :k:v}}
+%% FILE Cleo{{=v}}.txt
+ok zdez dez
 
-%% FILE ok2ee.txt
-am the boss
-%% FILE ok2.txt
-this is good-ish
-{{~ ["apple", "banana", "orange"] :k}}
-# {{=k}}
+    {{|= {a:{b:3} } }}
+
+            {{|=it.kk}}
+
 {{~}}
+
+%% FILE kaka.txt
+a
+
+{{%}}
+b {{%>}}
+      c
+
+
+%% FILE kaka2.txt
+début
+début2
+// %% HOLE thecaca
+fin
+fin2
